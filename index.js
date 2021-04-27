@@ -21,6 +21,12 @@ apps.post("/", (req, res) => {
   res.status(200).end() // Responding is important
 })
 
+apps.get("/", (req, res) => {
+  console.log('GET request received');
+  res.status(200).end() // Responding is important
+  res.send('This the simple Webhook server sample.  Use POST methods instead of GET.')
+})
+
 const server = createServer(app);
 const wss = new WebSocket.Server({ server });
 
