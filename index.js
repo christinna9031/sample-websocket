@@ -14,16 +14,17 @@ const wss = new WebSocket.Server({ server });
 const connections = {}
 
 wss.on('connection', function (ws) {
+  console.log(ws)
   ws.send("Hello");
 
   ws.on('close', function (ws) {
-    ws.send("Connection closed")
-    console.log('stopping client connection');
+   console.log('stopping client connection');
   });
 
   ws.on('message', function (e) {
     if (e.name) connections[e.name] = ws
     console.log(e)
+    console.log(e.name)
     ws.send(e)
 
   })
