@@ -16,12 +16,12 @@ app.use(express.static(path.join(__dirname, '/public')));
 apps.use(bodyParser.json())
 apps.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`))
 
-apps.post("/", (req, res) => {
+apps.post("/hook", (req, res) => {
   console.log(req.body) // Call your action on the request here
   res.status(200).end() // Responding is important
 })
 
-apps.get("/", (req, res) => {
+apps.get("/hook", (req, res) => {
   console.log('GET request received');
   res.status(200).end() // Responding is important
   res.send('This the simple Webhook server sample.  Use POST methods instead of GET.')
