@@ -20,7 +20,7 @@ wss.on('connection', function (ws) {
     console.log('stopping client connection');
   });
 
-  ws.on('message', function (ws) {
+  ws.on('message', function (e) {
     console.log(e.data)
     ws.send(e.data)
 
