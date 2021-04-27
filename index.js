@@ -13,16 +13,22 @@ const server = createServer(app);
 const wss = new WebSocket.Server({ server });
 
 wss.on('connection', function (ws) {
-  const id = setInterval(function () {
-    ws.send("Hello"});
-  }, 100);
-  console.log('started client interval');
+  ws.send("Hello");
 
-  ws.on('close', function () {
-    console.log('stopping client interval');
-    clearInterval(id);
+  ws.on('close', function (ws) {
+    ws.send("Connection closed")
+    console.log('stopping client connection');
   });
+
+  ws.on('message', function (ws) {
+    console.log(e.data)
+    ws.send(e.data)
+
+  })
+
 });
+
+
 
 server.listen(8080, function () {
   console.log('Listening on http://0.0.0.0:8080');
