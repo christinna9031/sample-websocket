@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, '/public')));
 apps.use(bodyParser.json())
 apps.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`))
 
-apps.post("/hook", (req, res) => {
+apps.post("/", (req, res) => {
   console.log(req.body) // Call your action on the request here
   res.status(200).end() // Responding is important
 })
