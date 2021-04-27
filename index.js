@@ -5,12 +5,13 @@ const path = require('path');
 const { createServer } = require('http');
 
 const WebSocket = require('ws');
-
 const app = express();
+
 app.use(express.static(path.join(__dirname, '/public')));
 
 const server = createServer(app);
 const wss = new WebSocket.Server({ server });
+const connections = {}
 
 wss.on('connection', function (ws) {
   ws.send("Hello");
@@ -21,6 +22,7 @@ wss.on('connection', function (ws) {
   });
 
   ws.on('message', function (e) {
+    if (e.name) connections[e.name] = ws
     console.log(e)
     ws.send(e)
 
