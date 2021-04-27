@@ -14,7 +14,7 @@ const wss = new WebSocket.Server({ server });
 
 wss.on('connection', function (ws) {
   const id = setInterval(function () {
-    ws.send(JSON.stringify("Hello");
+    ws.send(JSON.stringify("Hello"));
   }, 1000);
   console.log('started client interval');
 
