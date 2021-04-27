@@ -21,8 +21,8 @@ wss.on('connection', function (ws) {
   });
 
   ws.on('message', function (e) {
-    console.log(e.data)
-    ws.send(e.data)
+    console.log(e)
+    ws.send(e)
 
   })
 
